@@ -24,8 +24,13 @@ imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
-sanboot --no-describe https://192.168.1.222/ce-2020.09.16.iso || goto failed
+initrd https://192.168.1.222/ce-2020.09.16.iso
+kernel ${boot-url}/memdisk iso raw || goto failed
 boot || goto custom_exit
+
+
+boot || goto failed
+goto start
 
 
 
