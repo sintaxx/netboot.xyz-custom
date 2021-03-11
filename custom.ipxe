@@ -24,9 +24,12 @@ imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd https://192.168.1.222/ce-2020.09.16.iso
+sanboot --no-describe https://192.168.1.222/ce-2020.09.16.iso || goto failed
 boot || goto custom_exit
+
+
+
+goto start
 
 :option_three
 echo Chains into another menu...
